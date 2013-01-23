@@ -6,6 +6,7 @@ gem 'sqlite3', '1.3.7'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
+  #gem 'annotate'
 end
 
 group :test do
@@ -16,6 +17,9 @@ group :test do
   gem 'autotest-rails-pure'#, '4.1.2'
   gem 'autotest-fsevent'#, '0.2.4'
   gem 'autotest-growl'#, '0.2.9'
+
+  #gem 'spork'
+  gem 'spork-rails'
 end
 
 # Gems used only for assets and not required
