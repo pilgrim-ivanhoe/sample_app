@@ -27,7 +27,14 @@ end
 
 group :test, :development do
   gem 'factory_girl_rails'
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
+
+# For Heroku PostgreSQL
+group :production do
+  gem 'pg'
+end
+
 
 # Gems used only for assets and not required
 # in production environments by default.
