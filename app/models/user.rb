@@ -23,11 +23,39 @@ class User < ActiveRecord::Base
 
     #Метод класса
 	def self.authenticate(email, submitted_password)
-    	user = find_by_email(email) 
-    	# поскольку метод класса self опускается для find_by...s
-    	return nil  if user.nil?
-    	return user if user.has_password?(submitted_password)
-  	end
+		user = find_by_email(email) 
+		# поскольку метод класса self опускается для find_by...s
+		return nil  if user.nil?
+		return user if user.has_password?(submitted_password)
+	end
+
+	# 2 вариант
+  	# def User.authenticate(email, submitted_password)
+	  #   user = find_by_email(email)
+	  #   return nil  if user.nil?
+	  #   return user if user.has_password?(submitted_password)
+  	# end
+
+  	# 3 вариант
+	# def self.authenticate(email, submitted_password)
+	#     user = find_by_email(email)
+	#     return nil  if user.nil?
+	#     return user if user.has_password?(submitted_password)
+	#     return nil
+ #  	end
+
+  	# 4 вариант
+	# def self.authenticate(email, submitted_password)
+	#     user = find_by_email(email)
+	#     if user.nil?
+	#       nil
+	#     elsif user.has_password?(submitted_password)
+	#       user
+	#     else
+	#       nil
+	#     end
+ #  	end
+
 
 	private
 
@@ -48,3 +76,16 @@ class User < ActiveRecord::Base
 	      Digest::SHA2.hexdigest(string)
 	    end                 
 end
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime        not null
+#  updated_at         :datetime        not null
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#
+
