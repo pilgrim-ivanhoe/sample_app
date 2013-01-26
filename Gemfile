@@ -22,7 +22,6 @@ group :test do
 
   #gem 'spork'
   gem 'spork-rails'
-
 end
 
 group :test, :development do
