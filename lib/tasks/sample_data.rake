@@ -7,6 +7,7 @@ namespace :db do
                  :password => "foobar",
                  :password_confirmation => "foobar")
     admin.toggle!(:admin)
+    
     ## Заполнение development базы
     99.times do |n|
       name  = Faker::Name.name
@@ -17,5 +18,12 @@ namespace :db do
                    :password => password,
                    :password_confirmation => password)
     end
+
+    User.all(:limit => 6).each do |user|
+      50.times do
+        user.microposts.create!(:content => Faker::Lorem.sentence(5))
+      end
+    end
+
   end
 end
